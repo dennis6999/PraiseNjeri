@@ -248,14 +248,14 @@ const PageHero = () => (
 );
 
 const PageGallery = () => (
-    <div className="w-full h-full flex flex-col items-center justify-center pt-20 pb-6 px-12 md:px-16 overflow-hidden relative">
-        <div className="text-4xl mb-2 mt-6">📸</div>
+    <div className="w-full h-full flex flex-col items-center justify-center pt-8 pb-6 px-12 md:px-16 overflow-hidden relative">
+        <div className="text-4xl mb-2 mt-2">📸</div>
         <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-6 text-center z-20">
             A few of my favorite views
         </h2>
 
         {/* Playful, scattered grid layout for 11 images */}
-        <div className="relative w-full max-w-4xl h-[60vh] flex flex-wrap justify-center gap-2 md:gap-4 overflow-y-auto pb-20 px-2 styling-scrollbar z-10">
+        <div className="relative w-full max-w-5xl h-[60vh] flex flex-wrap justify-center gap-2 md:gap-4 overflow-y-auto pb-20 px-2 styling-scrollbar z-10">
             <style dangerouslySetInnerHTML={{
                 __html: `
                 .styling-scrollbar::-webkit-scrollbar { width: 6px; }
@@ -288,7 +288,7 @@ const PageGallery = () => (
                             }
                         `}} />
                         <div
-                            className={`p-2 bg-white rounded-xl border-[3px] border-pink-100 shadow-md group-hover:border-pink-300 group-hover:shadow-2xl transition-colors ${isFeatured ? 'w-[140px] md:w-[200px]' : 'w-[100px] md:w-[150px]'}`}
+                            className={`p-2 bg-white rounded-xl border-[3px] border-pink-100 shadow-md group-hover:border-pink-300 group-hover:shadow-2xl transition-colors ${isFeatured ? 'w-[160px] md:w-[240px]' : 'w-[130px] md:w-[180px]'}`}
                             style={{ transform: `rotate(${rotate}deg)` }}
                         >
                             <img
