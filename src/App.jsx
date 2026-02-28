@@ -248,7 +248,7 @@ const PageHero = () => (
 );
 
 const PageGallery = () => (
-    <div className="w-full h-full flex flex-col items-center justify-center px-4 overflow-hidden relative">
+    <div className="w-full h-full flex flex-col items-center justify-center pt-20 pb-6 px-12 md:px-16 overflow-hidden relative">
         <div className="text-4xl mb-2 mt-6">📸</div>
         <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-6 text-center z-20">
             A few of my favorite views
@@ -309,52 +309,68 @@ const PageGallery = () => (
 );
 
 const PageReasons = () => (
-    <div className="w-full h-full flex flex-col items-center justify-center px-6 overflow-hidden">
-        <div className="text-4xl mb-2">💘</div>
-        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-8 text-center">{CONFIG.reasonsTitle}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl w-full">
-            {CONFIG.reasons.map((reason, index) => {
-                const Icon = reason.icon;
-                return (
-                    <div
-                        key={index}
-                        className="bg-white border-2 border-pink-200 p-5 rounded-3xl hover:border-pink-400 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-100 transition-all duration-300 group cursor-default"
-                        style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                        <Icon className="w-6 h-6 text-rose-400 mb-3 group-hover:scale-125 group-hover:text-rose-600 transition-all duration-300" />
-                        <h3 className="font-display text-xl text-rose-600 mb-1">{reason.title}</h3>
-                        <p className="font-body text-rose-400 text-sm leading-relaxed">{reason.desc}</p>
-                    </div>
-                );
-            })}
+    <div className="w-full h-full flex flex-col items-center justify-center pt-24 pb-6 px-12 md:px-20 overflow-hidden">
+        <div className="text-4xl mb-2 flex-shrink-0">💘</div>
+        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-6 text-center flex-shrink-0">{CONFIG.reasonsTitle}</h2>
+        <div className="w-full max-w-3xl overflow-y-auto styling-scrollbar pb-10 px-2 flex-1">
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .styling-scrollbar::-webkit-scrollbar { width: 4px; }
+                .styling-scrollbar::-webkit-scrollbar-track { background: transparent; }
+                .styling-scrollbar::-webkit-scrollbar-thumb { background: #fca5a5; border-radius: 10px; }
+            `}} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                {CONFIG.reasons.map((reason, index) => {
+                    const Icon = reason.icon;
+                    return (
+                        <div
+                            key={index}
+                            className="bg-white border-2 border-pink-200 p-5 rounded-3xl hover:border-pink-400 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-100 transition-all duration-300 group cursor-default"
+                            style={{ animationDelay: `${index * 100}ms` }}
+                        >
+                            <Icon className="w-6 h-6 text-rose-400 mb-3 group-hover:scale-125 group-hover:text-rose-600 transition-all duration-300" />
+                            <h3 className="font-display text-xl text-rose-600 mb-1">{reason.title}</h3>
+                            <p className="font-body text-rose-400 text-sm leading-relaxed">{reason.desc}</p>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     </div>
 );
 
 const PageVouchers = () => (
-    <div className="w-full h-full flex flex-col items-center justify-center px-6 overflow-hidden">
-        <div className="text-4xl mb-2">🎀</div>
-        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-1 text-center">{CONFIG.vouchersTitle}</h2>
-        <p className="font-body text-pink-400 text-xs tracking-[0.15em] uppercase mb-8">{CONFIG.vouchersSubtitle}</p>
-        <div className="flex flex-col md:flex-row gap-4 max-w-4xl w-full justify-center">
-            {CONFIG.vouchers.map((voucher, index) => (
-                <div
-                    key={index}
-                    className="relative overflow-hidden border-2 border-dashed border-pink-300 rounded-3xl p-6 flex-1 max-w-[320px] mx-auto md:mx-0 bg-gradient-to-b from-pink-50 to-rose-50 hover:border-rose-400 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-100 transition-all duration-400 group cursor-pointer"
-                >
-                    <div className="absolute -top-4 -right-4 w-20 h-20 bg-pink-200/40 rounded-full group-hover:scale-[2.5] transition-transform duration-700 ease-out" />
-                    <div className="text-3xl mb-3">{voucher.emoji}</div>
-                    <h3 className="font-display text-xl text-rose-500 mb-2 group-hover:text-rose-600">{voucher.title}</h3>
-                    <p className="font-body text-rose-400 text-sm leading-relaxed">{voucher.desc}</p>
-                </div>
-            ))}
+    <div className="w-full h-full flex flex-col items-center justify-center pt-20 pb-6 px-12 md:px-20 overflow-hidden">
+        <div className="text-4xl mb-2 flex-shrink-0">🎀</div>
+        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-1 text-center flex-shrink-0">{CONFIG.vouchersTitle}</h2>
+        <p className="font-body text-pink-400 text-xs tracking-[0.15em] uppercase mb-6 flex-shrink-0">{CONFIG.vouchersSubtitle}</p>
+        <div className="w-full max-w-4xl overflow-y-auto styling-scrollbar pb-10 px-2 flex-1">
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .styling-scrollbar::-webkit-scrollbar { width: 4px; }
+                .styling-scrollbar::-webkit-scrollbar-track { background: transparent; }
+                .styling-scrollbar::-webkit-scrollbar-thumb { background: #fca5a5; border-radius: 10px; }
+            `}} />
+            <div className="flex flex-col md:flex-row gap-4 w-full justify-center">
+                {CONFIG.vouchers.map((voucher, index) => (
+                    <div
+                        key={index}
+                        className="relative overflow-hidden border-2 border-dashed border-pink-300 rounded-3xl p-6 flex-1 max-w-[320px] mx-auto md:mx-0 bg-gradient-to-b from-pink-50 to-rose-50 hover:border-rose-400 hover:-translate-y-2 hover:shadow-xl hover:shadow-pink-100 transition-all duration-400 group cursor-pointer"
+                    >
+                        <div className="absolute -top-4 -right-4 w-20 h-20 bg-pink-200/40 rounded-full group-hover:scale-[2.5] transition-transform duration-700 ease-out" />
+                        <div className="text-3xl mb-3">{voucher.emoji}</div>
+                        <h3 className="font-display text-xl text-rose-500 mb-2 group-hover:text-rose-600">{voucher.title}</h3>
+                        <p className="font-body text-rose-400 text-sm leading-relaxed">{voucher.desc}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     </div>
 );
 
 const PageMessage = () => (
-    <div className="w-full h-full flex flex-col items-center justify-center px-6 text-center max-w-2xl mx-auto">
-        <div className="text-5xl mb-6 animate-bounce-slow">💌</div>
+    <div className="w-full h-full flex flex-col items-center justify-center pt-20 pb-6 px-12 md:px-20 text-center max-w-2xl mx-auto overflow-y-auto styling-scrollbar">
+        <div className="text-5xl mb-6 animate-bounce-slow flex-shrink-0">💌</div>
         <div className="w-28 h-[2px] bg-gradient-to-r from-transparent via-pink-300 to-transparent mb-8" />
         <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-8">{CONFIG.loveNoteHeading}</h2>
         <p className="font-body text-base md:text-lg text-rose-500/80 leading-loose">
@@ -365,9 +381,9 @@ const PageMessage = () => (
 );
 
 const PageSurprise = ({ onOpenModal }) => (
-    <div className="w-full h-full flex flex-col items-center justify-center px-6 text-center">
-        <div className="text-6xl mb-6 animate-bounce">🎁</div>
-        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-4">One Last Thing... 🤫</h2>
+    <div className="w-full h-full flex flex-col items-center justify-center pt-20 pb-6 px-12 md:px-20 text-center overflow-y-auto styling-scrollbar">
+        <div className="text-6xl mb-6 animate-bounce flex-shrink-0">🎁</div>
+        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-4 flex-shrink-0">One Last Thing... 🤫</h2>
         <p className="font-body text-rose-400 max-w-sm mx-auto mb-10 leading-relaxed text-sm md:text-base">
             I couldn't fit your main present on a single page, but I left a special little button just for you 👇
         </p>
