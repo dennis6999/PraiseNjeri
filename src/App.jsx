@@ -66,7 +66,7 @@ const CONFIG = {
     loveNoteHeading: "My Favorite Person",
     loveNoteBody: "Happy Birthday! I wanted to make something special just for you. Every single day with you feels like a gift I didn't deserve. You make everything brighter, sillier, and sweeter. You deserve the whole world — and while I'm still working on that, I promise to keep showing up for you every day. 🌹",
 
-    images: Array.from({ length: 11 }, (_, i) => `/images/img${i + 1}.jpeg`),
+    images: Array.from({ length: 17 }, (_, i) => `/images/img${i + 1}.jpeg`),
 
     songTitle: "Get You",
     songArtist: "Daniel Caesar ft. Kali Uchis",
