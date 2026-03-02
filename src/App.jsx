@@ -156,59 +156,7 @@ const ConfettiBurst = ({ active }) => {
     );
 };
 
-// ==========================================
-// 📱 SURPRISE MODAL
-// ==========================================
-const SurpriseModal = ({ isOpen, onClose }) => {
-    const [step, setStep] = useState('initial');
-    useEffect(() => { if (isOpen) setStep('initial'); }, [isOpen]);
-    if (!isOpen) return null;
 
-    return (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-md">
-            <div className="w-[320px] bg-white rounded-[28px] shadow-2xl overflow-hidden border-4 border-pink-200">
-                {step === 'initial' && (
-                    <div className="p-8 flex flex-col items-center text-center">
-                        <div className="text-5xl mb-4 animate-bounce">🎁</div>
-                        <h3 className="font-display text-2xl font-bold text-rose-500 mb-2">Mystery Treat!</h3>
-                        <p className="font-body text-sm text-rose-400 leading-relaxed mb-8">
-                            You have a pending, highly classified birthday surprise waiting to be claimed 🤫
-                        </p>
-                        <button
-                            onClick={() => { setStep('loading'); setTimeout(() => setStep('success'), 12000); }}
-                            className="w-full py-3.5 bg-gradient-to-r from-pink-400 to-rose-500 text-white font-bold rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-pink-200 text-[15px]"
-                        >
-                            I Accept! 💝
-                        </button>
-                        <button onClick={onClose} className="mt-4 text-xs text-rose-300 hover:text-rose-500 transition-colors">Maybe later</button>
-                    </div>
-                )}
-                {step === 'loading' && (
-                    <div className="p-10 flex flex-col items-center justify-center text-center space-y-5">
-                        <div className="text-4xl animate-spin">💖</div>
-                        <h3 className="font-display text-xl text-rose-500">Sending love...</h3>
-                        <p className="font-body text-sm text-rose-400 leading-relaxed">
-                            Pinging his phone for approval.<br /><br />
-                            <span className="italic text-pink-400">(Just stare at him 👀 until he does it)</span>
-                        </p>
-                    </div>
-                )}
-                {step === 'success' && (
-                    <div className="p-8 flex flex-col items-center text-center">
-                        <div className="text-5xl mb-4">✅</div>
-                        <h3 className="font-display text-2xl font-bold text-rose-500 mb-2">Approved! 🎉</h3>
-                        <p className="font-body text-sm text-rose-400 leading-relaxed mb-8">
-                            Check your phone messages right now. Love you! ❤️
-                        </p>
-                        <button onClick={onClose} className="w-full py-3.5 bg-rose-50 hover:bg-rose-100 rounded-2xl text-rose-500 font-bold transition-colors text-[15px]">
-                            Close 💕
-                        </button>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-};
 
 // ==========================================
 // 📄 PAGES
@@ -380,20 +328,13 @@ const PageMessage = () => (
     </div>
 );
 
-const PageSurprise = ({ onOpenModal }) => (
+const PageSurprise = () => (
     <div className="w-full h-full flex flex-col items-center justify-center pt-20 pb-6 px-12 md:px-20 text-center overflow-y-auto styling-scrollbar">
-        <div className="text-6xl mb-6 animate-bounce flex-shrink-0">🎁</div>
-        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-4 flex-shrink-0">One Last Thing... 🤫</h2>
+        <div className="text-6xl mb-6 animate-bounce flex-shrink-0">💖</div>
+        <h2 className="font-display text-3xl md:text-5xl text-rose-500 mb-4 flex-shrink-0">I Love You, {CONFIG.girlfriendsName}</h2>
         <p className="font-body text-rose-400 max-w-sm mx-auto mb-10 leading-relaxed text-sm md:text-base">
-            I couldn't fit your main present on a single page, but I left a special little button just for you 👇
+            Thank you for being the absolute best part of my life. I hope today is as amazing and beautiful as you are. Enjoy your special day! 🎉🥂
         </p>
-        <button
-            onClick={onOpenModal}
-            className="relative group overflow-hidden px-10 py-4 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 text-white font-bold tracking-wide text-sm md:text-base shadow-xl shadow-pink-200 hover:shadow-2xl hover:shadow-pink-300 hover:scale-105 active:scale-95 transition-all duration-300"
-        >
-            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative">Claim Birthday Treat 💝</span>
-        </button>
         <p className="mt-16 text-rose-300 font-body text-xs tracking-[0.25em] uppercase">Made with 💗 for {CONFIG.girlfriendsName}</p>
     </div>
 );
@@ -410,7 +351,6 @@ export default function App() {
     const [currentPage, setCurrentPage] = useState(0);
     const [direction, setDirection] = useState(1);
     const [animating, setAnimating] = useState(false);
-    const [showMpesaModal, setShowMpesaModal] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
 
     const goToPage = useCallback((index) => {
@@ -505,7 +445,7 @@ export default function App() {
         <PageReasons />,
         <PageVouchers />,
         <PageMessage />,
-        <PageSurprise onOpenModal={() => setShowMpesaModal(true)} />,
+        <PageSurprise />,
     ];
 
     return (
@@ -536,7 +476,6 @@ export default function App() {
 
             <FloatingHearts />
             <BackgroundAudio playing={musicPlaying} onToggle={() => setMusicPlaying(p => !p)} />
-            <SurpriseModal isOpen={showMpesaModal} onClose={() => setShowMpesaModal(false)} />
 
             {/* PAGE */}
             <div className="absolute inset-0 z-10 flex items-center justify-center" style={slideStyle}>
